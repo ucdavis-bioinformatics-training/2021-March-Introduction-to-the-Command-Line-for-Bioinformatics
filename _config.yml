@@ -33,8 +33,6 @@ navigation:
   - heading: ETC
   - title: Closing thoughts
     url: base/closing
-  - title: Workshop Photos
-    url: photos/photos
   - title: Github page
     url: https://github.com/2021-March-Introduction-to-the-Command-Line-for-Bioinformatics
   - title: Biocore website
