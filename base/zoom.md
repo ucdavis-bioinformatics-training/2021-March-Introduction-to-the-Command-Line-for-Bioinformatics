@@ -10,7 +10,7 @@
 
 ## Basic Controls
 
-<img src="https://raw.githubusercontent.com/ucdavis-bioinformatics-training/ucdavis-bioinformatics-training.presentations/master/misc/zoom/controls.png" alt="conrtol menu" width="800px"/>
+<img src="https://raw.githubusercontent.com/ucdavis-bioinformatics-training/ucdavis-bioinformatics-training.presentations/master/misc/zoom/controls.png" alt="control menu" width="800px"/>
 
 The basic controls can be found at the bottom of the Zoom window. These controls allow participants to control their audio and video. You will automatically be muted on joining the call, but can unmute yourself at any time. When the  "Participants" icon in the control menu is selected, a panel will expand from the right side of the Zoom window to display a list of participants.
 
@@ -18,13 +18,13 @@ The basic controls can be found at the bottom of the Zoom window. These controls
 
 ## Non-verbal Responses
 
-During lectures, our instructors will occasionally request non-verbal feedback from all participants to quickly assess how well the group is following the material, gauge interest in a topic, and keep track of the number of participants that have completed a hands-on exercise. These options can be found at the bottom of the participants panel.
+During lectures, our instructors will occasionally request non-verbal feedback from all participants to quickly assess how well the group is following the material, gauge interest in a topic, and keep track of the number of participants that have completed a hands-on exercise. These options can be found at by clicking on the "Reactions" icon in the control menu.
 
 <img src="https://raw.githubusercontent.com/ucdavis-bioinformatics-training/ucdavis-bioinformatics-training.presentations/master/misc/zoom/nonverbal.png" alt="nonberbal response options" width="800px"/>
 
 ## Asking Questions
 
-In addition to non-verbal feedback, we want to hear from participants during lecture sections. Please raise your hand using the "raise hand" option beneath the participants panel to get the speaker's attention. The instructor will invite you to ask your question, and you should unmute yourself and speak. When your question has been answered, lower your hand.
+In addition to non-verbal feedback, we want to hear from participants during lecture sections. Please raise your hand using the "raise hand" option under "Reactions" to get the speaker's attention. The instructor will invite you to ask your question, and you should unmute yourself and speak. When your question has been answered, lower your hand.
 
 ## Breakout rooms
 
