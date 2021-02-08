@@ -19,10 +19,6 @@ navigation:
     url: base/zoom
   - title: Cheat Sheets
     url: base/cheatSheetIndex
-  - title: Software and Links
-    url: software_scripts/software
-  - title: Scripts
-    url: software_scripts/scripts_links
 
   - heading: CLI
   - title: Introduction to the Command Line
