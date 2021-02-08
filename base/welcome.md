@@ -53,20 +53,12 @@ We ask for a little more patience as this process is also new to us, but we are 
 
 ### Workshop Goals
 
-This workshop is an end-to-end exploration of three popular types of epigenetic experiments: ChIP-Seq, ATAC-Seq, and whole genome bisulfite sequencing (WGBS).
+This workshop is intended to provide a comprehensive introduction to the basics of the command line as it is used for bioinformatics. By the end of the third session, participants should:
 
-* End to End understanding of the basics
-  * Lectures/Discussions
-  * Technologies use
-  * Experimental design
-  * Cost estimation
-  * Workflow
-  * Data reduction
-  * Data analysis
-
-* To work through complete experiments, starting from raw data to completion, including making a few figures.
-
-* Goal is 30-40% lecture/discussion 60-70% hands-on
+* Be able to navigate a Unix / Linux file system on the command line
+* Copy, rename, move, and edit files
+* Pipe command line tools together to create complex commands
+* Use a high-performance computing cluster
 
 ### Workshop Materials
 
@@ -83,9 +75,9 @@ Workshop materials are all posted on github, and publicly available
    [https://ucdavis-bioinformatics-training.github.io/](https://ucdavis-bioinformatics-training.github.io/)
 
 
-* This Introduction to Analysis of Epigenetic Data Workshop
+* This Introduction to the Command Line for Bioinformatics workshop
 
-   [https://ucdavis-bioinformatics-training.github.io/2020-Epigenetics_Workshop/](https://ucdavis-bioinformatics-training.github.io/2020-Epigenetics_Workshop/)
+   [https://ucdavis-bioinformatics-training.github.io/2021-March-Introduction-to-the-Command-Line-for-Bioinformatics/](https://ucdavis-bioinformatics-training.github.io/2021-March-Introduction-to-the-Command-Line-for-Bioinformatics/)
 
 ### Computing Cluster
 
