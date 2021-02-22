@@ -105,6 +105,8 @@ function showResults(myq, qc, rc){
 </object>
 
 
+# Session 1
+
 ## What is the Command-Line Interface
 
 * The CLI is a tool into which one can type commands to perform tasks.
@@ -399,6 +401,8 @@ buildQuiz(myQuestions2, quizContainer2);
 submitButton2.addEventListener('click', function() {showResults(myQuestions2, quizContainer2, resultsContainer2);});
 </script>
 
+# Session 2
+
 ## History Repeats Itself
 
 Linux remembers everything you've done (at least in the current shell session), which allows you to pull steps from your history, potentially modify them, and redo them. This can obviously save a lot of time and typing.
@@ -555,6 +559,9 @@ myQuestions3 = [
 buildQuiz(myQuestions3, quizContainer3);
 submitButton3.addEventListener('click', function() {showResults(myQuestions3, quizContainer3, resultsContainer3);});
 </script>
+
+
+# Session 3
 
 ## Piping and Redirection
 
