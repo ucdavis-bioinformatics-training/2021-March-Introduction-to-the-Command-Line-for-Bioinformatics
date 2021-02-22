@@ -21,8 +21,12 @@ navigation:
     url: base/cheatSheetIndex
 
   - heading: CLI
-  - title: Introduction to the Command Line
-    url: cli/command-line-intro
+  - title: Introduction to the Command Line 1
+    url: cli/command-line-intro1
+  - title: Introduction to the Command Line 2
+    url: cli/command-line-intro2
+  - title: Introduction to the Command Line 3
+    url: cli/command-line-intro3
   - title: High Performance Computing
     url: cli/cluster
 
