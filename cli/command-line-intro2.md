@@ -230,3 +230,138 @@ buildQuiz(myQuestions3, quizContainer3);
 submitButton3.addEventListener('click', function() {showResults(myQuestions3, quizContainer3, resultsContainer3);});
 </script>
 
+## Piping and Redirection
+
+Pipes ('\|') allow commands to hand output to other commands, and redirection characters ('>' and '>>') allow you to put output into files.
+
+    echo 'first' > test.txt
+    cat test.txt # outputs the contents of the file to the terminal
+    echo 'second' > test.txt
+    cat test.txt
+    echo 'third' >> test.txt
+    cat test.txt
+
+The '>' character redirects output of a command that would normally go to the screen instead into a specified file. '>' overwrites the file, '>>' appends to the file.
+
+The 'cut' command pieces of lines from a file line by line. This command cuts characters 1 to 3, from every line, from file 'test.txt'
+
+    cut -c 1-3 test.txt  
+
+same thing, piping output of one command into input of another
+
+    cat test.txt | cut -c 1-3  
+
+This pipes (i.e., sends the output of) cat to cut to sort (-r means reverse order sort), and then grep searches for pattern ('s') matches (i.e. for any line where an 's' appears anywhere on the line.)
+
+    cat test.txt | cut -c 1-3 | sort -r
+    cat test.txt | cut -c 1-3 | sort -r | grep s
+
+This is a great way to build up a set of operations while inspecting the output of each step in turn. We'll do more of this in a bit.
+
+
+## Compression and Archives
+
+As file sizes get large, you'll often see compressed files, or whole compressed folders. Note that **any good bioinformatics software** should be able to work with compressed file formats. 
+
+    gzip test.txt
+    cat test.txt.gz
+
+To uncompress a file
+
+    gunzip -c test.txt.gz
+
+The '-c' leaves the original file alone, but dumps expanded output to screen
+
+    gunzip test.txt.gz  # now the file should change back to uncompressed test.txt
+
+Tape archives, or .tar files, are one way to compress entire folders and all contained folders into one file. When they're further compressed they're called 'tarballs'. We can use wget (web get).
+
+    wget http://igenomes.illumina.com.s3-website-us-east-1.amazonaws.com/PhiX/Illumina/RTA/PhiX_Illumina_RTA.tar.gz
+
+The .tar.gz and .tgz are *commonly used* extensions for compressed tar files, when gzip compression is used. The application tar is used to uncompress .tar files
+
+    tar -xzvf PhiX_Illumina_RTA.tar.gz
+
+Here -x = extract, -z = use gzip/gunzip, -v = verbose (show each file in archive), -f filename
+
+Note that, unlike Windows, linux does not depend on file extensions to determine file behavior. So you could name a tarball 'fish.puppy' and the extract command above should work just fine. The only thing that should be different is that tab-completion doesn't work within the 'tar' command if it doesn't see the 'correct' file extension.    
+
+
+## BASH Wildcard Characters
+
+We can use 'wildcard characters' when we want to specify or operate on sets of files all at once.
+
+    ls ?hiX/Illumina
+
+list files in Illumina sub-directory of any directory ending in 'hiX'
+
+    ls PhiX/Illumina/RTA/Sequence/*/*.fa
+
+list all files ending in '.fa' a few directories down. So, '?' fills in for zero or one character, '\*' fills in for zero or more characters. The 'find' command can be used to locate files using a similar form.
+
+    find . -name "*.f*"
+    find . -name "*.f?"
+
+how is this different from the previous ls commands?
+
+#### Quick Note About the Quote(s)
+
+The quote characters " and ' are different. In general, single quotes preserve the *literal* meaning of all characters between them. On the other hand, double quotes allow the shell to see what's between them and make substitutions when appropriate. For example:
+
+    VRBL=someText
+    echo '$VRBL'
+    echo "$VRBL"
+
+However, some commands try to be 'smarter' about this behavior, so it's a little hard to predict what will happen in all cases. It's safest to experiment first when planning a command that depends on quoting ... list filenames first, instead of changing them, etc. Finally, the 'backtick' characters \` (same key - unSHIFTED - as the tilde ~) causes the shell to interpret what's between them as a command, and return the result.
+
+     # counts the number of lines in file and stores result in the LINES variable
+    LINES=`cat PhiX/Illumina/RTA/Sequence/Bowtie2Index/genome.1.bt2 | wc -l` 
+    echo $LINES
+
+
+## Quiz 4
+
+<div id="quiz4" class="quiz"></div>
+<button id="submit4">Submit Quiz</button>
+<div id="results4" class="output"></div>
+<script>
+quizContainer4 = document.getElementById('quiz4');
+resultsContainer4 = document.getElementById('results4');
+submitButton4 = document.getElementById('submit4');
+
+myQuestions4 = [
+  {
+    question: "In the PhiX directory, count the number of the files ending in '.fa'. You will need to use the 'wc' command:",
+    answers: {
+      a: "15",
+      b: "9",
+      c: "7",
+      d: "10"
+    },
+    correctAnswer: "d"
+  },
+  {
+    question: "Which of the following commands will list all of the txt files in all the 'Genes' directories underneath the 'Archives' directory?",
+    answers: {
+      a: "ls PhiX/Illumina/RTA/*o*/Archives/*/*/*.txt",
+      b: "ls PhiX/Illumina/RTA/A*/Archives/*/*.txt",
+      c: "ls PhiX/Illumina/RTA/S*/Archives/*/*/*.txt",
+      d: "ls PhiX/Illumina/RTA/Annotation/Genes/*.text"
+    },
+    correctAnswer: "a"
+  },
+  {
+    question: "Find 'genome.fa' file in the PhiX directory. Use pipes to get characters 640 to 700 in the second line of the file:",
+    answers: {
+      a: "GCTCGTCGCTGCGTTGAGGCTTGCGTTTATGGTACGCTGGACTTTGTAGGATACCCTCGCT",
+      b: "TATTAAGCTCATTCAGGCTTCTGCCGTTTTGGATTTAACCGAAGATGATTTCGATTTTCTG",
+      c: "ATTATGTTCATCCCGTCAACATTCAAACGGCCTGTCTCATCATGGAAGGCGCTGAATTTAC",
+      d: "GGATTACTATCTGAGTCCGATGCTGTTCAACCACTAATAGGTAAGAAATCATGAGTCAAGT"
+    },
+    correctAnswer: "c"
+  }
+];
+
+buildQuiz(myQuestions4, quizContainer4);
+submitButton4.addEventListener('click', function() {showResults(myQuestions4, quizContainer4, resultsContainer4);});
+</script>
