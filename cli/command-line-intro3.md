@@ -75,7 +75,7 @@ function showResults(myq, qc, rc){
 
 ## Manipulation of a FASTA File
 
-We just found the phiX-174 genome, so let's copy it (using the 'cp' command) to our current directory so we can play with it:
+Let's copy the phiX-174 genome (using the 'cp' command) to our current directory so we can play with it:
 
     cp ./PhiX/Illumina/RTA/Sequence/WholeGenomeFasta/genome.fa phix.fa    
 

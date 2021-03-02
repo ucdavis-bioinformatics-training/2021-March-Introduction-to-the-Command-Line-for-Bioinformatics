@@ -77,7 +77,7 @@ function showResults(myq, qc, rc){
 1. What is the command line?
 2. Directory Structure 
 3. Syntax of a Command
-4. Logging Into a Remove Server
+4. Options of a Command
 5. Command Line Basics (ls, pwd, Ctrl-C, man, alias, ls -lthra)
 6. Getting Around (cd)
 7. Absolute and Relative Paths
@@ -115,31 +115,7 @@ function showResults(myq, qc, rc){
 
 <img src="figures/cli_figure1.png" alt="cli_figure1" width="800px"/>
 
-## Logging In
-
-In order to log in, you should have already created an account on our systems.
-
-### For Macs/Linux/Windows 10 - Logging In
-
-1. For Macs, open a Terminal (usually under Applications/Utilities on a Mac), or install [iterm2](https://www.iterm2.com/). For Linux, just open a regular terminal. For Windows 10, open a command prompt by searching for and running "cmd".
- 
-2. Copy and paste this into the terminal:
-
-    ssh username@tadpole.genomecenter.ucdavis.edu
-
-where 'username' is replaced with your username. Press Enter. You will probably get a warning about not being able to establish the authenticity of the host and it will ask if you want to continue connecting. Just type "yes" and press enter.
-
-3. Type in your password. No characters will display when you are typing. Press Enter.
-
-### For Windows 8 and less
-
-1. Download and install [PuTTY](http://www.putty.org/).
-2. Open up PuTTY
-3. In the Host Name field, type **tadpole.genomecenter.ucdavis.edu**
-4. Make sure the Connection Type is SSH.
-5. Press "Open". It will ask you for your username and password.
-
-After opening, system messages are often displayed, followed by the "prompt".
+After opening or logging into a terminal, system messages are often displayed, followed by the "prompt".
 A prompt is a short text message at the start of the command line and ends with '$' in bash shell, commands are typed after the prompt. The prompt typically follows the form **username@server:current_directory$**. If your screen looks like the one below, i.e. your see your a bunch of messages and then your username followed by "@tadpole:~$" at the beginning of the line, then you are successfully logged in.
 
 <img src="figures/cli_figure4.png" alt="cli_figure4" width="800px"/>
@@ -181,33 +157,33 @@ Lists directories and files *recursively*. This will be a very long output, so u
 
 Navigate this page using the up and down arrow keys, PageUp and PageDown, and then use q to quit out of the manual. In this manual page, find the following options, quit the page, and then try those commands. You could even open another terminal, log in again, and run manual commands in that terminal.
 
-    ls -l /share/genomes/GENCODE/GRCm38.p6/ # long format, gives permission values, owner, group, size, modification time, and name
+    ls -l /usr/bin/ # long format, gives permission values, owner, group, size, modification time, and name
 
 <img src="figures/ls1.png" alt="ls1" width="800px"/>
 
-    ls -a /share/genomes/GENCODE/GRCm38.p6/ # shows ALL files, including hidden ones
+    ls -a /lib # shows ALL files, including hidden ones
 
 <img src="figures/ls2.png" alt="ls2" width="800px"/>
 
-    ls -l -a /share/genomes/GENCODE/GRCm38.p6/ # does both of the above
+    ls -l -a /usr/bin # does both of the above
 
 <img src="figures/ls3.png" alt="ls3" width="800px"/>
 
-    ls -la  /share/genomes/GENCODE/GRCm38.p6/ # option 'smushing' can be done with single letter options
+    ls -la /usr/bin # option 'smushing' can be done with single letter options
 
 <img src="figures/ls4.png" alt="ls4" width="800px"/>
 
-    ls -ltrha /share/genomes/GENCODE/GRCm38.p6/ # shows all files, long format, in last modified time reverse order, with human readable sizes
+    ls -ltrha /usr/bin # shows all files, long format, in last modified time reverse order, with human readable sizes
 
 <img src="figures/ls5.png" alt="ls5" width="800px"/>
     
 And finally adding color (white for regular files, blue for directories, turquoise for links): 
 
-    ls -ltrha --color /share/genomes/GENCODE/GRCm38.p6/ # single letter (smushed) vs word options (Linux)
+    ls -ltrha --color /usr/bin # single letter (smushed) vs word options (Linux)
     
 **OR**
 
-    ls -ltrhaG /share/genomes/GENCODE/GRCm38.p6/ # (MacOS)
+    ls -ltrhaG /usr/bin # (MacOS)
 
 <img src="figures/ls6.png" alt="ls6" width="800px"/>
 
@@ -321,16 +297,16 @@ The filesystem you're working on is like the branching root system of a tree. Th
 
 You can think of paths like addresses. You can tell your friend how to go to a particular store *from where they are currently* (a 'relative' path), or *from the main Interstate Highway that everyone uses* (in this case, the root of the filesystem, '/' ... this is an 'absolute' path). Both are valid. But absolute paths can't be confused, because they always start off from the same place, and are unique. Relative paths, on the other hand, could be totally wrong for your friend *if you assume they're somewhere they're not*. With this in mind, let's try a few more:
 
-    cd ~  # let's start at home
+    cd /usr/bin  # let's start in /usr/bin
 
-**relative** (start here, take two steps up, then down through share and workshop)
+**relative** (start here, take one step up, then down through lib and gcc)
 
-    cd ../../share/workshop/
+    cd ../lib/gcc/
     pwd
 
 **absolute** (start at root, take steps)
 
-    cd /share/workshop/
+    cd /usr/lib/gcc/
     pwd
 
 Now, because it can be a real pain to type out, or remember these long paths, we need to discuss ...
@@ -341,6 +317,7 @@ Using tab-completion is a must on the command line. A single <tab> auto-complete
 
 touch updates the timestamp on a file, here we use it to create three empty files.
 
+    cd # go to your home directory
     mkdir ~/tmp
     cd ~/tmp
     touch one seven september
@@ -352,7 +329,7 @@ tab with no enter should complete to 'one', then enter
 
 tab with no enter completes up to 'se' since that's in common between seven and september. tab again and no enter, this second tab should cause listing of seven and september. type 'v' then tab and no enter now it's unique to seven, and should complete to seven. enter runs 'ls seven' command.
 
-I can't overstate how useful tab completion is. You should get used to using it constantly. Watch experienced users type and they maniacally hit tab once or twice in between almost every character. You don't have to go that far, of course, but get used to constantly getting feedback from hitting tab and you will save yourself a huge amount of typing and trying to remember weird directory and filenames.
+It cannot be overstated how useful tab completion is. You should get used to using it constantly. Watch experienced users type and they maniacally hit tab once or twice in between almost every character. You don't have to go that far, of course, but get used to constantly getting feedback from hitting tab and you will save yourself a huge amount of typing and trying to remember weird directory and filenames.
 
 ## Quiz 2
 
@@ -376,17 +353,7 @@ myQuestions2 = [
     correctAnswer: "a"
   },
   {
-    question: "What happens if you press tab twice quickly without any command?",
-    answers: {
-      a: "Nothing happens",
-      b: "Shows a listing of everything in the current directory",
-      c: "It wants to show you all the possible things you can run",
-      d: "You get an error message"
-    },
-    correctAnswer: "c"
-  },
-  {
-    question: "After returning to your home directory (just enter 'cd' by itself), verify that the two following commands are equivalent (replacing 'username' with your actual username):<br/><br/>cd ../../home/username/<br/>cd ../../../../../../../home/username/<br/><br/>Why are these very different-looking commands equivalent?",
+    question: "From the /usr/bin directory, verify that the two following commands are equivalent:<br/><br/>cd ../../lib/gcc/<br/>cd ../../../../../../../lib/gcc<br/><br/>Why are these very different-looking commands equivalent?",
     answers: {
       a: "The cd command knows where your home directory resides",
       b: "The terminal ignores excess dots",

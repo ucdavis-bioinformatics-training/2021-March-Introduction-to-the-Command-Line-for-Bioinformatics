@@ -111,27 +111,6 @@ You can also search your history from the command line:
     <ctrl-c>  # get out of recursive search
     <ctr-r>  # repeat <ctrl-r> to find successively older string matches
 
-## Transferring files
-### For Macs/Linux/Windows 10
-
-1. Open a Terminal/Command Prompt on your **local** machine.
-2. Using the cd command go to the directory you want to copy to.
-3. Use scp (secure copy, a remote file copying program):
-
-    scp username@tadpole.genomecenter.ucdavis.edu:/full/path/to/file .
-
-4. Replace 'username' with your username and replace '/full/path/to/file' with the full path to the file you want to transfer. Note that there is a "." at the end of the command, which is where to put the file, i.e. your current directory. You will have to type in your password.
-
-### For Windows 8 and less
-
-1. Open up WinSCP. If you haven't installed it, get WinSCP [here](https://winscp.net/eng/download.php).
-2. In the Host Name field, type **tadpole.genomecenter.ucdavis.edu**
-2. Type in your username and password.
-3. Make sure the File Protocol is SFTP.
-4. Press "Login".
-5. Look at the [WinSCP documentation](https://winscp.net/eng/docs/getting_started) to learn how to transfer items.
-
-**Try transferring a file from tadpole to your local computer.**
 
 ## Create and Destroy
 

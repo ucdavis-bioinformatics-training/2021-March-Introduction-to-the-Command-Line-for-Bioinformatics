@@ -1,3 +1,28 @@
+## Logging In
+
+In order to log in, you should have already created an account on our systems.
+
+### For Macs/Linux/Windows 10 - Logging In
+
+1. For Macs, open a Terminal (usually under Applications/Utilities on a Mac), or install [iterm2](https://www.iterm2.com/). For Linux, just open a regular terminal. For Windows 10, open a command prompt by searching for and running "cmd".
+ 
+2. Copy and paste this into the terminal:
+
+    ssh username@tadpole.genomecenter.ucdavis.edu
+
+where 'username' is replaced with your username. Press Enter. You will probably get a warning about not being able to establish the authenticity of the host and it will ask if you want to continue connecting. Just type "yes" and press enter.
+
+3. Type in your password. No characters will display when you are typing. Press Enter.
+
+### For Windows 8 and less
+
+1. Download and install [PuTTY](http://www.putty.org/).
+2. Open up PuTTY
+3. In the Host Name field, type **tadpole.genomecenter.ucdavis.edu**
+4. Make sure the Connection Type is SSH.
+5. Press "Open". It will ask you for your username and password.
+
+
 # Running jobs on the cluster and using modules
 
 **1\.** In the UC Davis Bioinformatics Core we have a large computational cluster (named lssc0) that we use for our analyses. The job scheduling system we use on this cluster is called [Slurm](https://slurm.schedmd.com/). In this section, we will go through examples of the commands we will be using to interact with the cluster.
