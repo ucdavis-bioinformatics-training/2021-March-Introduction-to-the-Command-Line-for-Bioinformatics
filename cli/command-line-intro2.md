@@ -118,7 +118,8 @@ We already learned one command that will create a file, touch. Lets create a fol
 
     cd  # home again
     echo $USER # echo to screen the contents of the variable $USER
-    cd ~/tmp
+    mkdir ~/tmp2
+    cd ~/tmp2
     echo 'Hello, world!' > first.txt
 
 echo text then redirect ('>') to a file.
@@ -133,10 +134,10 @@ why 'concatenate'? try this:
 OK, let's destroy what we just created:
 
     cd ../
-    rmdir tmp  # 'rmdir' meands 'remove directory', but this shouldn't work!
-    rm tmp/first.txt
-    rm tmp/second.txt  # clear directory first
-    rmdir tmp  # should succeed now
+    rmdir tmp2  # 'rmdir' meands 'remove directory', but this shouldn't work!
+    rm tmp2/first.txt
+    rm tmp2/second.txt  # clear directory first
+    rmdir tmp2  # should succeed now
 
 So, 'mkdir' and 'rmdir' are used to create and destroy (empty) directories. 'rm' to remove files. To create a file can be as simple as using 'echo' and the '>' (redirection) character to put text into a file. Even simpler is the 'touch' command.
 
@@ -296,6 +297,36 @@ However, some commands try to be 'smarter' about this behavior, so it's a little
      # counts the number of lines in file and stores result in the LINES variable
     LINES=`cat PhiX/Illumina/RTA/Sequence/Bowtie2Index/genome.1.bt2 | wc -l` 
     echo $LINES
+
+
+## Symbolic Links
+
+Since copying or even moving large files (like sequence data) around your filesystem may be impractical, we can use links to reference 'distant' files without duplicating the data in the files. Symbolic links are disposable pointers that refer to other files, but behave like the referenced files in commands. I.e., they are essentially 'Shortcuts' (to use a Windows term) to a file or directory.
+
+The 'ln' command creates a link. **You should, by default, always create a symbolic link using the -s option.**
+
+    ln -s PhiX/Illumina/RTA/Sequence/WholeGenomeFasta/genome.fa .
+    ls -ltrhaF  # notice the symbolic link pointing at its target
+    grep -c ">" genome.fa
+
+## STDOUT & STDERR
+
+Programs can write to two separate output streams, 'standard out' (STDOUT), and 'standard error' (STDERR). The former is generally for direct output of a program, while the latter is supposed to be used for reporting problems. I've seen some bioinformatics tools use STDERR to report summary statistics about the output, but this is probably bad practice. Default behavior in a lot of cases is to dump both STDOUT and STDERR to the screen, unless you specify otherwise. In order to nail down what goes where, and record it for posterity:
+
+    wc -c genome.fa 1> chars.txt 2> any.err
+
+the 1st output, STDOUT, goes to 'chars.txt'  
+the 2nd output, STDERR, goes to 'any.err'  
+
+    cat chars.txt
+
+Contains the character count of the file genome.fa
+
+    cat any.err
+
+Empty since no errors occured.
+
+Saving STDOUT is pretty routine (you want your results, yes?), but remember that explicitly saving STDERR is important on a remote server, since you may not directly see the 'screen' when you're running jobs.
 
 
 ## Quiz 4
