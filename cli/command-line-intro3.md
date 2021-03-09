@@ -357,7 +357,8 @@ Now let's modify our script to use command line arguments, which are arguments t
 #!/bin/bash
 
 echo "Start script..."
-pwd
+PWD=`pwd`
+echo "The present working directory is $PWD"
 ls -l $1
 sleep $2
 wc -l $3
