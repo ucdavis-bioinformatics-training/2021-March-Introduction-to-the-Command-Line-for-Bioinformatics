@@ -76,13 +76,7 @@ function showResults(myq, qc, rc){
 The sed command
 ----------------
 
-Let's take a look at the 'sed' command. sed (short for stream editor) is a command that allows you to manipulate character data in various ways. One useful thing it can do is substitution. First, make a directory called "advanced" in your user directory and go into it. The "$USER" variable contains your username.
-
-    cd /share/workshop/prereq_workshop/$USER/
-    mkdir advanced
-    cd advanced/
-
-Let's download a simple file to work on:
+Let's take a look at the 'sed' command. sed (short for stream editor) is a command that allows you to manipulate character data in various ways. One useful thing it can do is substitution. Let's download a simple file to work on:
 
     wget https://github.com/ucdavis-bioinformatics-training/2021-March-Introduction-to-the-Command-Line-for-Bioinformatics/raw/main/cli/region.bed -O region.bed
 
