@@ -128,9 +128,9 @@ More pipes
 Now, let's delve into pipes a little more. Pipes are a very powerful way to look at and manipulate complex data using a series of simple programs. Let's look at some fastq files. Get a few small fastq files:
 
     wget https://github.com/ucdavis-bioinformatics-training/2021-March-Introduction-to-the-Command-Line-for-Bioinformatics/raw/main/cli/C61.subset.fq.gz -O C61.subset.fq.gz
-    https://github.com/ucdavis-bioinformatics-training/2021-March-Introduction-to-the-Command-Line-for-Bioinformatics/raw/main/cli/I561.subset.fq.gz -O I561.subset.fq.gz
-    https://github.com/ucdavis-bioinformatics-training/2021-March-Introduction-to-the-Command-Line-for-Bioinformatics/raw/main/cli/I894.subset.fq.gz -O I894.subset.fq.gz
-    
+    wget https://github.com/ucdavis-bioinformatics-training/2021-March-Introduction-to-the-Command-Line-for-Bioinformatics/raw/main/cli/I561.subset.fq.gz -O I561.subset.fq.gz
+    wget https://github.com/ucdavis-bioinformatics-training/2021-March-Introduction-to-the-Command-Line-for-Bioinformatics/raw/main/cli/I894.subset.fq.gz -O I894.subset.fq.gz
+
 Since the files are gzipped files we need to use "zcat" to look at them. zcat is just like cat except for gzipped files:
 
     zcat C61.subset.fq.gz | head
@@ -154,7 +154,7 @@ Finally, as before, we need to sort the data and then use "uniq -c" to count. Th
 Now you have a list of how many reads were categorized into each barcode. Here is a [sed tutorial](https://www.digitalocean.com/community/tutorials/the-basics-of-using-the-sed-stream-editor-to-manipulate-text-in-linux) for more exercises.
 
 **CHALLENGE:**
-Find the distribution of the first 5 bases of all the reads in C61_S67_L006_R1_001.fastq.gz. I.e., count the number of times the first 5 bases of every read occurs across all reads.
+Find the distribution of the first 5 bases of all the reads in C61_S67_L006_R1_001.fq.gz. I.e., count the number of times the first 5 bases of every read occurs across all reads.
 
 
 Loops
@@ -222,7 +222,7 @@ When this runs it will print the name of every single file being processed and t
 
 Now, let's say you wanted to write the output of each command to a separate file. We would redirect the output to a filename, but we need to create a different file name for each command and we want the file name to reflect its contents, i.e. the output file name should be based on the input file name. So we use "parameter expansion", which is fancy way of saying substitution:
 
-    ls -1 *.fq.gz | while read x; do echo $x is being processed...; zcat $x | sed -n '2~4p' | head -10000 | grep -o . | sort | uniq -c > ${x%.fastq.gz}.nucl_count.txt; done
+    ls -1 *.fq.gz | while read x; do echo $x is being processed...; zcat $x | sed -n '2~4p' | head -10000 | grep -o . | sort | uniq -c > ${x%.fq.gz}.nucl_count.txt; done
 
 This will put the output of the counting command into a file whose name is the prefix of the input file plus ".nucl_count.txt". It will do this for every input file.
 
@@ -239,7 +239,7 @@ Similarly we can also use the move command here, but then ./PhiX/Illumina/RTA/Se
     mv ./PhiX/Illumina/RTA/Sequence/WholeGenomeFasta/genome2.fa phix.fa
     ls ./PhiX/Illumina/RTA/Sequence/WholeGenomeFasta/
 
-This functionality of mv is why it is used to rename files. 
+This functionality of mv is why it is used to rename files.
 
 Note how we copied the 'genome.fa' file to a different name: 'phix.fa'
 
@@ -279,7 +279,7 @@ Combine successive identical sequences, but count them using the 'uniq' command 
 
 Finally sort using reverse numeric order ('-rn')
 
-    grep --color  -o "ATG......" phix.fa | cut -c4-6 | sort | uniq -c | sort -rn 
+    grep --color  -o "ATG......" phix.fa | cut -c4-6 | sort | uniq -c | sort -rn
 
 ... which gives us the most common codons first
 
@@ -330,8 +330,8 @@ The first '-' becomes a 'd' if the 'file' is actually a directory. The next thre
 <div class="output">-rwxr-xr-- 1 msettles biocore 79 Aug 19 15:05 test.sh
 </div>
 
-The first 10 characters of the output represent the file and permissions. 
-The first character is the file type, the next three sets of three represent the file permissions for the user, group, and everyone respectively. 
+The first 10 characters of the output represent the file and permissions.
+The first character is the file type, the next three sets of three represent the file permissions for the user, group, and everyone respectively.
 - r = read
 - w = write
 - x = execute
@@ -417,7 +417,7 @@ Make it executable:
 And now we can execute the entire loop using the script. Note that there is only one argument now, the number of reads to use:
 
     ./get_nucl_counts_loop.sh 100
-    
+
 
 
 
@@ -467,4 +467,3 @@ myQuestions5 = [
 buildQuiz(myQuestions5, quizContainer5);
 submitButton5.addEventListener('click', function() {showResults(myQuestions5, quizContainer5, resultsContainer5);});
 </script>
-
